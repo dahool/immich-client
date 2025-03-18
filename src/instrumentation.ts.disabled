@@ -1,0 +1,10 @@
+import { createRelTable } from "./server/repository"
+
+// pg error after start
+export function register() {
+    (async () => {
+        console.log('Run migrations...')
+        await createRelTable()
+        console.log('Done migrations')
+    })();
+}
