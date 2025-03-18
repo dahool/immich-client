@@ -47,7 +47,9 @@ export async function authenticate(username: string, password: string): Promise<
 }
 
 export async function listAlbums(): Promise<Album[]> {
-    return (await do_get('albums')).data
+    const albums = (await do_get('albums?shared=true')).data
+    albums.sort((a: Album, b: Album) => a.albumName.localeCompare(b.albumName))
+    return albums
 }
 
 export async function getAlbum(id: string): Promise<Album> {
