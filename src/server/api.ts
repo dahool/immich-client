@@ -5,7 +5,7 @@ import { environment } from "@/env/environment";
 import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: environment.api.url,
+    baseURL: environment.api.url + "/api",
     headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
 })
 

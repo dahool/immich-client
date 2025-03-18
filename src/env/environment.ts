@@ -14,6 +14,6 @@ export const environment = {
         sessionSecret: process.env.SESSION_SECRET || "12345678",
     },
     api: {
-        url: process.env.IMMICH_URL || "http://localhost:3000/api"
+        url: process.env.IMMICH_URL || "http://localhost:3000"
     }
 }
