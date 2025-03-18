@@ -1,0 +1,17 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  build_and_publish:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v3
+    - name: Build and Publish
+      run : |
+        docker login --username dahool --password ${{ secrets.GH_TOKEN }} ghcr.io
+        docker build . --tag ghcr.io/dahool/immich-client:latest
+        docker push ghcr.io/dahool/immich-client:latest
