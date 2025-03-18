@@ -63,6 +63,13 @@ export async function addToAlbum(personIds: string[], albumId: string) {
     await client.query(query, [albumId, personIds]);
 }
 
+export async function addAssetsToAlbum(personId: string) {
+    const query = `
+        select * from insert_assets_for_person($1)
+    `
+    await client.query(query, [personId]);
+}
+
 export async function removeFromAlbum(personId: string, albumId: string) {
     const query = `
         DELETE FROM albums_persons

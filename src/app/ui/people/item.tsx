@@ -1,6 +1,6 @@
 'use client'
 import { getPeopleThumbnail, People } from "@/server/api";
-import { AlbumItemSkeleton, NoCoverImg } from "../album/item";
+import { AlbumItemSkeleton } from "../album/item";
 import { useEffect, useState } from "react";
 /*
 export default async function PeopleItem({ people }: { people: People }) {

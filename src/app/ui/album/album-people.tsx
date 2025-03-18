@@ -1,10 +1,8 @@
 'use client'
-
-import { Album, getAlbum, listPeople, People, PeopleResponse } from "@/server/api"
-import { Suspense, useEffect, useState } from "react"
+import { Album, getAlbum, listPeople, People } from "@/server/api"
+import { useEffect, useState } from "react"
 import AddPeopleDialog from "../people/add-people"
-import { addToAlbum, AlbumPerson, listAlbumPeople, removeFromAlbum } from "@/server/repository"
-import { AlbumItemSkeleton } from "./item"
+import { addAssetsToAlbum, addToAlbum, AlbumPerson, listAlbumPeople, removeFromAlbum } from "@/server/repository"
 import { FaPlus } from "react-icons/fa6"
 import PeopleItem from "../people/item"
 import { MdOutlinePersonRemove } from "react-icons/md"
@@ -39,6 +37,7 @@ export default function AlbumPeople({albumId}: {albumId: string}) {
       if (ids) {
         await addToAlbum(ids, albumId)
         fetchPersons()
+        await Promise.all(ids.map(id => addAssetsToAlbum(id)))
       }
     };
     const handleRemove = async (id: string) => {

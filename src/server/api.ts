@@ -37,7 +37,7 @@ export interface People {
 export async function do_get(url: string, type: 'arraybuffer' | 'json' = 'json'): Promise<any> {
     const accessToken = (await auth())?.accessToken
     const response = await axiosClient.get(url, { responseType: type, headers: {'Authorization': `Bearer ${accessToken}`, 'Accept': (type === 'arraybuffer' ? 'application/octet-stream' : 'application/json') }})
-    console.log(response)
+    //console.log(response)
     return response
 }
 

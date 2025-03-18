@@ -1,5 +1,4 @@
 import { listPeople } from "@/server/api";
-import Link from "next/link";
 import { Suspense } from "react";
 import PeopleItem from "./item";
 import { AlbumItemSkeleton } from "../album/item";
